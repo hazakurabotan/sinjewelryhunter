@@ -7,11 +7,16 @@ public class PlayerController : MonoBehaviour
 {
     private float axisH; //左右のキーの値を格納
     Rigidbody2D rbody;　//Rigidbody2Dの情報を扱うための媒体
+    Animator animator; //アニメーション情報をあつかうためのばいちゃい
+
     public float speed = 5.0f; //歩くすぴーど
     bool isJump;
     bool onGround;
     public LayerMask groundLayer;
     public float jump = 9.0f; //ジャンプ力
+
+
+
 
     // Start is called before the first frame update
     void Start()
@@ -20,6 +25,10 @@ public class PlayerController : MonoBehaviour
         //変数rbodyに宿した。以後、Rigidbody2Dコンポーネントの
         //変数rbodyという変数を通してプログラム側から活用できる。
         rbody = GetComponent<Rigidbody2D>();
+
+        //Playerのついてるあにめーたーコンポーネント読み込む
+        animator = GetComponent<Animator>();
+
     }
 
     // Update is called once per frame
@@ -35,12 +44,18 @@ public class PlayerController : MonoBehaviour
         if (axisH > 0)
         {
             transform.localScale = new Vector3(1, 1, 1);
+            animator.SetBool("Run", true); //担当しているコントローラーのパラメータをカエル
         }
 
         //もしaxisHが負の数なら左向き
         else if (axisH < 0)
         {
             transform.localScale = new Vector3(-1, 1, 1);　//Vector3は構造体
+            animator.SetBool("Run", true);  //担当しているコントローラーのパラメータをカエル
+        }
+        else
+        {
+            animator.SetBool("Run", false);  //担当しているコントローラーのパラメータをカエル
         }
 
         if (Input.GetButtonDown("Jump"))
