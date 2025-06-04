@@ -2,19 +2,10 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class GameController : MonoBehaviour
+public class Gimmickblock : MonoBehaviour
 {
-
-    public string gameState; // ゲームの状態ジャンリ
-
-    public GameObject restartButton; //リスタート
-    public GameObject nextButton; //リスタート
-
-
     // Start is called before the first frame update
     void Start()
-
-
     {
         
     }
